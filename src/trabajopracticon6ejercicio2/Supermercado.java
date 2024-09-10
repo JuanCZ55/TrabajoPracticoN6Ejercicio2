@@ -45,7 +45,7 @@ public class Supermercado extends javax.swing.JFrame {
         jDPMEscritorio.setLayout(jDPMEscritorioLayout);
         jDPMEscritorioLayout.setHorizontalGroup(
             jDPMEscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 650, Short.MAX_VALUE)
+            .addGap(0, 458, Short.MAX_VALUE)
         );
         jDPMEscritorioLayout.setVerticalGroup(
             jDPMEscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

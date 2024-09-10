@@ -14,7 +14,8 @@ public class TrabajoPracticoN6Ejercicio2 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
-    }
+
+Supermercado superm = new Supermercado();
+superm.setVisible(true);    }
     
 }
