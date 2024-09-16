@@ -38,12 +38,22 @@ public class ListaPrecio extends javax.swing.JInternalFrame {
         jTmaximo = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTtablaPre = new javax.swing.JTable();
-        jBbuscarPre = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jTminimo = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
 
         jLabel2.setText("Entre $");
+
+        jTmaximo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTmaximoActionPerformed(evt);
+            }
+        });
+        jTmaximo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTmaximoKeyReleased(evt);
+            }
+        });
 
         jTtablaPre.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -55,15 +65,20 @@ public class ListaPrecio extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(jTtablaPre);
 
-        jBbuscarPre.setText("Buscar");
-        jBbuscarPre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBbuscarPreActionPerformed(evt);
-            }
-        });
-
         jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel1.setText("Listado de Precios");
+
+        jTminimo.setToolTipText("");
+        jTminimo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTminimoActionPerformed(evt);
+            }
+        });
+        jTminimo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTminimoKeyReleased(evt);
+            }
+        });
 
         jLabel3.setText("Y");
 
@@ -78,90 +93,58 @@ public class ListaPrecio extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(31, 31, 31)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(86, 86, 86)
-                                .addComponent(jBbuscarPre))
+                            .addComponent(jLabel1)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTminimo, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(19, 19, 19)
+                                .addComponent(jTminimo, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel3)
                                 .addGap(18, 18, 18)
-                                .addComponent(jTmaximo, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(jTmaximo, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(33, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jBbuscarPre)
-                        .addGap(3, 3, 3))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(18, 18, 18)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(jTminimo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(44, 44, 44)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jTmaximo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel3)))
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jTminimo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3)
+                    .addComponent(jTmaximo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(44, 44, 44)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jBbuscarPreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBbuscarPreActionPerformed
+    private void jTmaximoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTmaximoKeyReleased
+        modelo.setRowCount(0);
+        filtrarPrecios();
 
-            Double min = Double.parseDouble(jTminimo.getText());
-            Double max = Double.parseDouble(jTmaximo.getText());
+    }//GEN-LAST:event_jTmaximoKeyReleased
 
-            modelo.setRowCount(0);
-            for (Producto producto : Supermercado.getListaProducto()) {
-                if (min >= producto.getPrecio()&& max <= producto.getPrecio()) {
-                    modelo.addRow(new Object[]{
-                        producto.getCodigo(),
-                        producto.getDescripcion(),
-                        producto.getPrecio(),
-                        producto.getRubro(),
-                        producto.getStock()
-                    });
+    private void jTminimoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTminimoKeyReleased
+        modelo.setRowCount(0);
+        filtrarPrecios();
 
-                } else if (min==null && max <= producto.getPrecio()) {
-                      modelo.addRow(new Object[]{
-                        producto.getCodigo(),
-                        producto.getDescripcion(),
-                        producto.getPrecio(),
-                        producto.getRubro(),
-                        producto.getStock()
-                    });
-                }else if (min >= producto.getPrecio()&& max==null){
-                 modelo.addRow(new Object[]{
-                        producto.getCodigo(),
-                        producto.getDescripcion(),
-                        producto.getPrecio(),
-                        producto.getRubro(),
-                        producto.getStock()
-                    });
-            }else if (min ==null&& max==null) {
-                    JOptionPane.showMessageDialog(this, "no se ingreso ningun valor");
-                }
-                    }
-        
+    }//GEN-LAST:event_jTminimoKeyReleased
 
-    }//GEN-LAST:event_jBbuscarPreActionPerformed
+    private void jTminimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTminimoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTminimoActionPerformed
+
+    private void jTmaximoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTmaximoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTmaximoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jBbuscarPre;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -170,4 +153,50 @@ public class ListaPrecio extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jTminimo;
     private javax.swing.JTable jTtablaPre;
     // End of variables declaration//GEN-END:variables
+private void filtrarPrecios() {
+        try {
+            Double min = null;
+            Double max = null;
+
+            if (!jTminimo.getText().isEmpty()) {
+                min = Double.parseDouble(jTminimo.getText());
+
+            }
+            if (!jTmaximo.getText().isEmpty()) {
+                max = Double.parseDouble(jTmaximo.getText());
+            }
+
+            for (Producto pro : Supermercado.getListaProducto()) {
+                if (min == null && pro.getPrecio() <= max) {
+                    modelo.addRow(new Object[]{
+                        pro.getCodigo(),
+                        pro.getDescripcion(),
+                        pro.getPrecio(),
+                        pro.getRubro(),
+                        pro.getStock()
+                    });
+                } else if (min <= pro.getPrecio() && max == null) {
+                    modelo.addRow(new Object[]{
+                        pro.getCodigo(),
+                        pro.getDescripcion(),
+                        pro.getPrecio(),
+                        pro.getRubro(),
+                        pro.getStock()
+                    });
+
+                } else if (min <= pro.getPrecio() && pro.getPrecio() <= max) {
+                    modelo.addRow(new Object[]{
+                        pro.getCodigo(),
+                        pro.getDescripcion(),
+                        pro.getPrecio(),
+                        pro.getRubro(),
+                        pro.getStock()
+                    });
+                }
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Digite los parametros correctos");
+            jTmaximo.setText(null);
+        }
+    }
 }

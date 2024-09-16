@@ -4,10 +4,10 @@ package trabajopracticon6ejercicio2;
 public class Producto implements Comparable<Producto> {
     private int codigo, stock;
     private String descripcion, rubro;
-    private double precio;
+    private Double precio;
     
 
-    public Producto(int codigo, String descripcion, double precio, String rubro, int stock) {
+    public Producto(int codigo, String descripcion, Double precio, String rubro, int stock) {
         this.codigo = codigo;
         this.descripcion = descripcion;
         this.precio = precio;
@@ -39,10 +39,10 @@ public class Producto implements Comparable<Producto> {
     public void setRubro(String rubro) {
         this.rubro = rubro;
     }
-    public double getPrecio() {
+    public Double getPrecio() {
         return precio;
     }
-    public void setPrecio(double precio) {
+    public void setPrecio(Double precio) {
         this.precio = precio;
     }
     
