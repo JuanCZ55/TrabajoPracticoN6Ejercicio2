@@ -4,6 +4,7 @@
  */
 package trabajopracticon6ejercicio2;
 
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -11,11 +12,12 @@ import javax.swing.table.DefaultTableModel;
  * @author juanz
  */
 public class ListaPrecio extends javax.swing.JInternalFrame {
+
     private final DefaultTableModel modelo = new DefaultTableModel();
 
     public ListaPrecio() {
         initComponents();
-                modelo.addColumn("Codigo");
+        modelo.addColumn("Codigo");
         modelo.addColumn("Descripcion");
         modelo.addColumn("Precio");
         modelo.addColumn("Categoria");
@@ -54,6 +56,11 @@ public class ListaPrecio extends javax.swing.JInternalFrame {
         jScrollPane1.setViewportView(jTtablaPre);
 
         jBbuscarPre.setText("Buscar");
+        jBbuscarPre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBbuscarPreActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel1.setText("Listado de Precios");
@@ -111,6 +118,46 @@ public class ListaPrecio extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jBbuscarPreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBbuscarPreActionPerformed
+
+            Double min = Double.parseDouble(jTminimo.getText());
+            Double max = Double.parseDouble(jTmaximo.getText());
+
+            modelo.setRowCount(0);
+            for (Producto producto : Supermercado.getListaProducto()) {
+                if (min >= producto.getPrecio()&& max <= producto.getPrecio()) {
+                    modelo.addRow(new Object[]{
+                        producto.getCodigo(),
+                        producto.getDescripcion(),
+                        producto.getPrecio(),
+                        producto.getRubro(),
+                        producto.getStock()
+                    });
+
+                } else if (min==null && max <= producto.getPrecio()) {
+                      modelo.addRow(new Object[]{
+                        producto.getCodigo(),
+                        producto.getDescripcion(),
+                        producto.getPrecio(),
+                        producto.getRubro(),
+                        producto.getStock()
+                    });
+                }else if (min >= producto.getPrecio()&& max==null){
+                 modelo.addRow(new Object[]{
+                        producto.getCodigo(),
+                        producto.getDescripcion(),
+                        producto.getPrecio(),
+                        producto.getRubro(),
+                        producto.getStock()
+                    });
+            }else if (min ==null&& max==null) {
+                    JOptionPane.showMessageDialog(this, "no se ingreso ningun valor");
+                }
+                    }
+        
+
+    }//GEN-LAST:event_jBbuscarPreActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
