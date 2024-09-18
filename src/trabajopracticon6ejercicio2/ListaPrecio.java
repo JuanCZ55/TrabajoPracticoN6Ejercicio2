@@ -43,25 +43,14 @@ public class ListaPrecio extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jLabel2 = new javax.swing.JLabel();
-        jTmaximo = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTtablaPre = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
-        jTminimo = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
+        jSMinimo = new javax.swing.JSpinner();
+        jSMaximo = new javax.swing.JSpinner();
 
         jLabel2.setText("Entre $");
-
-        jTmaximo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTmaximoActionPerformed(evt);
-            }
-        });
-        jTmaximo.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                jTmaximoKeyReleased(evt);
-            }
-        });
 
         jTtablaPre.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -76,19 +65,21 @@ public class ListaPrecio extends javax.swing.JInternalFrame {
         jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel1.setText("Listado de Precios");
 
-        jTminimo.setToolTipText("");
-        jTminimo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTminimoActionPerformed(evt);
-            }
-        });
-        jTminimo.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                jTminimoKeyReleased(evt);
+        jLabel3.setText("Y");
+
+        jSMinimo.setModel(new javax.swing.SpinnerNumberModel(0.0d, 0.0d, null, 1.0d));
+        jSMinimo.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jSMinimoStateChanged(evt);
             }
         });
 
-        jLabel3.setText("Y");
+        jSMaximo.setModel(new javax.swing.SpinnerNumberModel(0.0d, 0.0d, null, 1.0d));
+        jSMaximo.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jSMaximoStateChanged(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -104,25 +95,25 @@ public class ListaPrecio extends javax.swing.JInternalFrame {
                             .addComponent(jLabel1)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel2)
-                                .addGap(19, 19, 19)
-                                .addComponent(jTminimo, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jSMinimo, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(12, 12, 12)
                                 .addComponent(jLabel3)
-                                .addGap(18, 18, 18)
-                                .addComponent(jTmaximo, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jSMaximo, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(33, Short.MAX_VALUE)
+                .addContainerGap(37, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTminimo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3)
-                    .addComponent(jTmaximo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jSMinimo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jSMaximo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(44, 44, 44)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -131,71 +122,34 @@ public class ListaPrecio extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTmaximoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTmaximoKeyReleased
+    private void jSMinimoStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSMinimoStateChanged
         modelo.setRowCount(0);
         filtrarPrecios();
+    }//GEN-LAST:event_jSMinimoStateChanged
 
-    }//GEN-LAST:event_jTmaximoKeyReleased
-
-    private void jTminimoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTminimoKeyReleased
+    private void jSMaximoStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSMaximoStateChanged
         modelo.setRowCount(0);
         filtrarPrecios();
-
-    }//GEN-LAST:event_jTminimoKeyReleased
-
-    private void jTminimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTminimoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTminimoActionPerformed
-
-    private void jTmaximoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTmaximoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTmaximoActionPerformed
+    }//GEN-LAST:event_jSMaximoStateChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JSpinner jSMaximo;
+    private javax.swing.JSpinner jSMinimo;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTmaximo;
-    private javax.swing.JTextField jTminimo;
     private javax.swing.JTable jTtablaPre;
     // End of variables declaration//GEN-END:variables
 private void filtrarPrecios() {
         try {
-            Double min = null;//Se guarda datos null
-            Double max = null;//se uso Double para poder trabajar con ese campo vacio si lo esta
-
-            if (!jTminimo.getText().isEmpty()) {//solamete se guarda cuando el campo no esta vacio
-                min = Double.parseDouble(jTminimo.getText());//se castean de string a Double
-
-            }
-            if (!jTmaximo.getText().isEmpty()) {
-                max = Double.parseDouble(jTmaximo.getText());
-            }
-            //recorro la lista
+            Double min = (Double) jSMinimo.getValue();
+            Double max = (Double) jSMaximo.getValue();
             for (Producto pro : Supermercado.getListaProducto()) {
                 //Creamos las condiciones para que no se exiga ambos parametros de max-min
-                //este mostrara solomente los valores menores iguales a max
-                if (min == null && pro.getPrecio() <= max) {
-                    modelo.addRow(new Object[]{
-                        pro.getCodigo(),
-                        pro.getDescripcion(),
-                        pro.getPrecio(),
-                        pro.getRubro(),
-                        pro.getStock()
-                    });
-                    //este mostrara los valores mayores iguales a min
-                } else if (min <= pro.getPrecio() && max == null) {
-                    modelo.addRow(new Object[]{
-                        pro.getCodigo(),
-                        pro.getDescripcion(),
-                        pro.getPrecio(),
-                        pro.getRubro(),
-                        pro.getStock()
-                    });
                 //este muestra cuando se establece los valores de min y max
-                } else if (min <= pro.getPrecio() && pro.getPrecio() <= max) {
+                if (min <= pro.getPrecio() && pro.getPrecio() <= max) {
                     modelo.addRow(new Object[]{
                         pro.getCodigo(),
                         pro.getDescripcion(),
@@ -207,9 +161,6 @@ private void filtrarPrecios() {
             }
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Digite los parametros correctos");
-            jTmaximo.setText(null);
-            jTminimo.setText(null);
-
         }
     }
 }

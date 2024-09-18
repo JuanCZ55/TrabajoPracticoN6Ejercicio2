@@ -24,6 +24,7 @@ public class Gestion extends javax.swing.JInternalFrame {
         modelo.addColumn("Categoria");
         modelo.addColumn("Strock");
         jTable1.setModel(modelo);
+        
     }
 
     /**
@@ -51,12 +52,12 @@ public class Gestion extends javax.swing.JInternalFrame {
         jTFPrecio = new javax.swing.JTextField();
         jSStock = new javax.swing.JSpinner();
         jCBRubro = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        jBBuscar = new javax.swing.JButton();
+        jBCerrar = new javax.swing.JButton();
+        jBLimpiar = new javax.swing.JButton();
         jBGuardar = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        jBActualizar = new javax.swing.JButton();
+        jBEliminar = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel1.setText("Gestion de Productos");
@@ -64,11 +65,6 @@ public class Gestion extends javax.swing.JInternalFrame {
         jLabel2.setText("Filtrar por Categoria:");
 
         jCBFiltrar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Comestible", "Limpieza", "Perfumeria" }));
-        jCBFiltrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCBFiltrarActionPerformed(evt);
-            }
-        });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -151,26 +147,26 @@ public class Gestion extends javax.swing.JInternalFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/icons8-búsqueda-30.png"))); // NOI18N
-        jButton1.setText("Buscar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jBBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/icons8-búsqueda-30.png"))); // NOI18N
+        jBBuscar.setText("Buscar");
+        jBBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jBBuscarActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Cerrar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jBCerrar.setText("Cerrar");
+        jBCerrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jBCerrarActionPerformed(evt);
             }
         });
 
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/icons8-limpiar-24.png"))); // NOI18N
-        jButton3.setText("Limpiar");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        jBLimpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/icons8-limpiar-24.png"))); // NOI18N
+        jBLimpiar.setText("Limpiar");
+        jBLimpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                jBLimpiarActionPerformed(evt);
             }
         });
 
@@ -182,19 +178,19 @@ public class Gestion extends javax.swing.JInternalFrame {
             }
         });
 
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/icons8-actualizar-24.png"))); // NOI18N
-        jButton5.setText("Actualizar");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        jBActualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/icons8-actualizar-24.png"))); // NOI18N
+        jBActualizar.setText("Actualizar");
+        jBActualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                jBActualizarActionPerformed(evt);
             }
         });
 
-        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/icons8-borrar-para-siempre-24.png"))); // NOI18N
-        jButton6.setText("Eliminar");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        jBEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/icons8-borrar-para-siempre-24.png"))); // NOI18N
+        jBEliminar.setText("Eliminar");
+        jBEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                jBEliminarActionPerformed(evt);
             }
         });
 
@@ -226,17 +222,17 @@ public class Gestion extends javax.swing.JInternalFrame {
                                 .addGap(0, 39, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jButton3)
+                                .addComponent(jBLimpiar)
                                 .addGap(18, 18, 18)
                                 .addComponent(jBGuardar)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton5)))
+                                .addComponent(jBActualizar)))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton6)
+                            .addComponent(jBEliminar)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)
-                                .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addComponent(jBBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)
+                                .addComponent(jBCerrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGap(25, 25, 25))))
         );
         layout.setVerticalGroup(
@@ -258,33 +254,34 @@ public class Gestion extends javax.swing.JInternalFrame {
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(29, 29, 29)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jBBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jBCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)))
                 .addGap(55, 55, 55)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jBEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jBActualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jBGuardar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jBLimpiar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(24, 24, 24))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jBCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCerrarActionPerformed
         this.dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_jBCerrarActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void jBLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLimpiarActionPerformed
         jTFCodigo.setText(null);
         JTFDescripcion.setText(null);
         jTFPrecio.setText(null);
         jCBRubro.setSelectedIndex(0);
         jSStock.setValue(0);
-    }//GEN-LAST:event_jButton3ActionPerformed
+        jBGuardar.setEnabled(true);
+    }//GEN-LAST:event_jBLimpiarActionPerformed
 
     private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
         try {
@@ -312,6 +309,7 @@ public class Gestion extends javax.swing.JInternalFrame {
                     aux.getStock()
                 });
             }
+            jBGuardar.setEnabled(false);
 
         } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(this, "Digite los parametros correctos");
@@ -320,7 +318,7 @@ public class Gestion extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_jBGuardarActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void jBActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBActualizarActionPerformed
         try {
             int codigo = Integer.parseInt(jTFCodigo.getText());
             double precio = Double.parseDouble(jTFPrecio.getText());
@@ -354,15 +352,16 @@ public class Gestion extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(this, "El producto se puede actualizar ya que este no existe");
 
             }
+            jBGuardar.setEnabled(true);
 
         } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(this, "Digite los parametros correctos");
         }
 
 
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_jBActualizarActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void jBEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEliminarActionPerformed
         try {
             int codigo = Integer.parseInt(jTFCodigo.getText());
             double precio = Double.parseDouble(jTFPrecio.getText());
@@ -384,15 +383,20 @@ public class Gestion extends javax.swing.JInternalFrame {
             } else {
                 JOptionPane.showMessageDialog(this, "El producto no se a encontrado");
             }
+            jBGuardar.setEnabled(true);
 
         } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(this, "Digite los parametros correctos");
         }
 
 
-    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_jBEliminarActionPerformed
 
-    private void jCBFiltrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBFiltrarActionPerformed
+    private void jCBRubroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBRubroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCBRubroActionPerformed
+
+    private void jBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarActionPerformed
         modelo.setRowCount(0);//Elimina filas
         for (Producto producto : Supermercado.getListaProducto()) {
             if (producto.getRubro().equals(jCBFiltrar.getSelectedItem())) {
@@ -405,25 +409,18 @@ public class Gestion extends javax.swing.JInternalFrame {
                     });
             }
         }
-    }//GEN-LAST:event_jCBFiltrarActionPerformed
-
-    private void jCBRubroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBRubroActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jCBRubroActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+        jBGuardar.setEnabled(true);
+    }//GEN-LAST:event_jBBuscarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField JTFDescripcion;
+    private javax.swing.JButton jBActualizar;
+    private javax.swing.JButton jBBuscar;
+    private javax.swing.JButton jBCerrar;
+    private javax.swing.JButton jBEliminar;
     private javax.swing.JButton jBGuardar;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jBLimpiar;
     private javax.swing.JComboBox<String> jCBFiltrar;
     private javax.swing.JComboBox<String> jCBRubro;
     private javax.swing.JLabel jLabel1;
@@ -441,3 +438,17 @@ public class Gestion extends javax.swing.JInternalFrame {
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }
+/*
+modelo.setRowCount(0);//Elimina filas
+        for (Producto producto : Supermercado.getListaProducto()) {
+            if (producto.getRubro().equals(jCBFiltrar.getSelectedItem())) {
+                        modelo.addRow(new Object[]{
+                        producto.getCodigo(),
+                        producto.getDescripcion(),
+                        producto.getPrecio(),
+                        producto.getRubro(),
+                        producto.getStock()
+                    });
+            }
+        }
+*/
