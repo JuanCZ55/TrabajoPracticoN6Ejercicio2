@@ -6,7 +6,15 @@ import javax.swing.table.DefaultTableModel;
 
 public class Gestion extends javax.swing.JInternalFrame {
 
-    private final DefaultTableModel modelo = new DefaultTableModel();
+     private class NonEditableTableModel extends DefaultTableModel {
+        @Override
+        public boolean isCellEditable(int row, int column) {
+            return false; 
+        }
+    }
+
+    private final NonEditableTableModel modelo = new NonEditableTableModel();
+
 
     public Gestion() {
         initComponents();
@@ -86,6 +94,8 @@ public class Gestion extends javax.swing.JInternalFrame {
         jLabel6.setText("Rubro");
 
         jLabel7.setText("Stock");
+
+        jSStock.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
 
         jCBRubro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Comestible", "Limpieza", "Perfumeria" }));
         jCBRubro.addActionListener(new java.awt.event.ActionListener() {

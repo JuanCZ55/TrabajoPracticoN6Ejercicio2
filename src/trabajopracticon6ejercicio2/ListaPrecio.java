@@ -13,7 +13,15 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ListaPrecio extends javax.swing.JInternalFrame {
 
-    private final DefaultTableModel modelo = new DefaultTableModel();
+    private class NonEditableTableModel extends DefaultTableModel {
+        @Override
+        public boolean isCellEditable(int row, int column) {
+            return false; 
+        }
+    }
+
+    private final NonEditableTableModel modelo = new NonEditableTableModel();
+
 
     public ListaPrecio() {
         initComponents();
@@ -155,18 +163,20 @@ public class ListaPrecio extends javax.swing.JInternalFrame {
     // End of variables declaration//GEN-END:variables
 private void filtrarPrecios() {
         try {
-            Double min = null;
-            Double max = null;
+            Double min = null;//Se guarda datos null
+            Double max = null;//se uso Double para poder trabajar con ese campo vacio si lo esta
 
-            if (!jTminimo.getText().isEmpty()) {
-                min = Double.parseDouble(jTminimo.getText());
+            if (!jTminimo.getText().isEmpty()) {//solamete se guarda cuando el campo no esta vacio
+                min = Double.parseDouble(jTminimo.getText());//se castean de string a Double
 
             }
             if (!jTmaximo.getText().isEmpty()) {
                 max = Double.parseDouble(jTmaximo.getText());
             }
-
+            //recorro la lista
             for (Producto pro : Supermercado.getListaProducto()) {
+                //Creamos las condiciones para que no se exiga ambos parametros de max-min
+                //este mostrara solomente los valores menores iguales a max
                 if (min == null && pro.getPrecio() <= max) {
                     modelo.addRow(new Object[]{
                         pro.getCodigo(),
@@ -175,6 +185,7 @@ private void filtrarPrecios() {
                         pro.getRubro(),
                         pro.getStock()
                     });
+                    //este mostrara los valores mayores iguales a min
                 } else if (min <= pro.getPrecio() && max == null) {
                     modelo.addRow(new Object[]{
                         pro.getCodigo(),
@@ -183,7 +194,7 @@ private void filtrarPrecios() {
                         pro.getRubro(),
                         pro.getStock()
                     });
-
+                //este muestra cuando se establece los valores de min y max
                 } else if (min <= pro.getPrecio() && pro.getPrecio() <= max) {
                     modelo.addRow(new Object[]{
                         pro.getCodigo(),
@@ -197,6 +208,8 @@ private void filtrarPrecios() {
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Digite los parametros correctos");
             jTmaximo.setText(null);
+            jTminimo.setText(null);
+
         }
     }
 }

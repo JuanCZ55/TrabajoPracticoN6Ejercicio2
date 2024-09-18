@@ -12,8 +12,16 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ListaRubro extends javax.swing.JInternalFrame {
 
-    private final DefaultTableModel modelo = new DefaultTableModel();
-    
+    private class NonEditableTableModel extends DefaultTableModel {
+        @Override
+        public boolean isCellEditable(int row, int column) {
+            return false; 
+        }
+    }
+
+    private final NonEditableTableModel modelo = new NonEditableTableModel();
+
+
     public ListaRubro() {
         initComponents();
         modelo.addColumn("Codigo");

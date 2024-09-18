@@ -12,7 +12,15 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ListaNombre extends javax.swing.JInternalFrame {
 
-    private final DefaultTableModel modelo = new DefaultTableModel();
+   private class NonEditableTableModel extends DefaultTableModel {
+        @Override
+        public boolean isCellEditable(int row, int column) {
+            return false; 
+        }
+    }
+
+    private final NonEditableTableModel modelo = new NonEditableTableModel();
+
 
     public ListaNombre() {
         initComponents();
@@ -22,6 +30,7 @@ public class ListaNombre extends javax.swing.JInternalFrame {
         modelo.addColumn("Categoria");
         modelo.addColumn("Strock");
         jTtablaNom.setModel(modelo);
+        
     }
 
     /**
@@ -95,9 +104,10 @@ public class ListaNombre extends javax.swing.JInternalFrame {
 
     private void jTingresoNomKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTingresoNomKeyReleased
         modelo.setRowCount(0);
+        //no se uso ningun cotrolador de formato ya que existe marcas/descripciones que contengan simbolos y numeros ejemplo: P&G, 7up, M&M's
         for (Producto pro : Supermercado.getListaProducto()) {
             if (pro.getDescripcion().toLowerCase().startsWith(jTingresoNom.getText().toLowerCase())) {
-                modelo.addRow(new Object[]{pro.getCodigo(),pro.getDescripcion(),pro.getPrecio(),pro.getRubro(),pro.getStock()});
+                modelo.addRow(new Object[]{pro.getCodigo(), pro.getDescripcion(), pro.getPrecio(), pro.getRubro(), pro.getStock()});
             }
         }
 
